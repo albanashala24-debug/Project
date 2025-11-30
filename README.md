@@ -1,2 +1,2 @@
-# LandingPage
-LandingPage Description
+# Project
+Project Description
