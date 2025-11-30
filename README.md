@@ -16,3 +16,7 @@ Designed with clean UI, smooth animations, and modern web standards.
 ---
 
 ## 📂 Folder Structure
+/LandingPage
+├── index.html
+├── style.css
+└── script.js
