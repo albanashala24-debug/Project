@@ -1,0 +1,21 @@
+# ☁ Weather App – Real-Time Weather
+
+A modern and clean weather application using the Open-Meteo API.  
+Displays current temperature, wind speed, and city information.
+
+---
+
+## ✨ Features
+- Real-time live weather using *Open-Meteo API*
+- Search by any city name
+- Modern, clean, responsive UI
+- Error handling for invalid city inputs
+- Fast & lightweight
+
+---
+
+## 📂 Folder Structure
+/WeatherApp
+── index.html
+── style.css
+── app.js
