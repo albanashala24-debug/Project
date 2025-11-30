@@ -1,0 +1,20 @@
+# 📝 To-Do App – Modern Task Manager
+
+A clean and modern To-Do list application with automatic saving using LocalStorage.
+
+---
+
+## ✨ Features
+- Add tasks
+- Delete tasks
+- Saves tasks automatically (LocalStorage)
+- Minimalist and modern UI
+- Smooth animations
+
+---
+
+## 📂 Folder Structure
+/ToDoApp
+── index.html
+── style.css
+── app.js
