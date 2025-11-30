@@ -1,0 +1,20 @@
+# 🔢 Modern JavaScript Calculator
+
+A modern, responsive calculator UI with full keyboard input support.
+
+---
+
+## ✨ Features
+- Clean and modern UI
+- Supports keyboard typing
+- All math operations: +, −, ×, ÷
+- Responsive layout
+- Error-safe evaluation
+
+---
+
+## 📂 Folder Structure
+/Calculator
+── index.html
+── style.css
+── app.js
