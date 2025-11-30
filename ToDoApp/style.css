@@ -1,0 +1,26 @@
+body {
+  background: #fafafa;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.container {
+  width: 350px;
+}
+
+ul {
+  margin-top: 20px;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  background: #eee;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+}
