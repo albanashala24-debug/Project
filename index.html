@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
+
+<button id="themeToggle">🌙</button>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Dashboard</h2>
+    <nav>
+      <p class="active">Dashboard</p>
+      <p>Orders</p>
+      <p>Customers</p>
+      <p>Products</p>
+      <p>Reports</p>
+      <p>Settings</p>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <input type="text" placeholder="Search..." />
+
+      <div class="top-right">
+        <span>🔔</span>
+        <span>👤</span>
+        <input type="date" />
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="kpis">
+      <div class="card">
+        <p>Total Revenue</p>
+        <h2>$50,000</h2>
+      </div>
+
+      <div class="card">
+        <p>Total Orders</p>
+        <h2>2,000</h2>
+      </div>
+
+      <div class="card">
+        <p>New Customers</p>
+        <h2>400</h2>
+      </div>
+
+      <div class="card">
+        <p>Conversion Rate</p>
+        <h2>3.2%</h2>
+      </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="chart-card">
+  
+  <h3>Monthly Revenue</h3>
+
+  <div class="chart">
+
+    <!-- Jan -->
+    <div class="group">
+      <div class="bar dark" style="height: 40%"></div>
+      <div class="bar light" style="height: 30%"></div>
+      <span>Jan</span>
+    </div>
+
+    <!-- Feb -->
+    <div class="group">
+      <div class="bar dark" style="height: 90%"></div>
+      <div class="bar light" style="height: 70%"></div>
+      <span>Feb</span>
+    </div>
+
+    <!-- Mar -->
+    <div class="group">
+      <div class="bar dark" style="height: 85%"></div>
+      <div class="bar light" style="height: 65%"></div>
+      <span>Mar</span>
+    </div>
+
+    <!-- Apr -->
+    <div class="group">
+      <div class="bar dark" style="height: 0%"></div>
+      <div class="bar light" style="height: 0%"></div>
+      <span>Apr</span>
+    </div>
+  </div>
+
+</div>
+
+    <!-- CUSTOMER -->
+    <div class="card big">
+      <h3>Customer Growth</h3>
+      <canvas id="customerChart"></canvas>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card table">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Albana Shala</td>
+            <td>Laptop</td>
+            <td>4 Mar</td>
+            <td>$1000</td>
+            <td class="green">Completed</td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>Ardit Hoxha</td>
+            <td>Phone</td>
+            <td>6 Mar</td>
+            <td>$600</td>
+            <td class="orange">Pending</td>
+          </tr>
+
+          <tr>
+            <td>3</td>
+            <td>Lira Gashi</td>
+            <td>Car</td>
+            <td>8 Mar</td>
+            <td>$9000</td>
+            <td class="green">Completed</td>
+          </tr>
+
+
+          <td><span class="green">Completed</span></td>
+          <td><span class="orange">Pending</span></td>
+          <td><span class="red">Cancelled</span></td>
+
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
