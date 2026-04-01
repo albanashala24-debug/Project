@@ -67,48 +67,142 @@
     </div>
 
     <!-- CHARTS -->
-    <div class="chart-card">
-  
-  <h3>Monthly Revenue</h3>
-
-  <div class="chart">
-
-    <!-- Jan -->
-    <div class="group">
-      <div class="bar dark" style="height: 40%"></div>
-      <div class="bar light" style="height: 30%"></div>
-      <span>Jan</span>
-    </div>
-
-    <!-- Feb -->
-    <div class="group">
-      <div class="bar dark" style="height: 90%"></div>
-      <div class="bar light" style="height: 70%"></div>
-      <span>Feb</span>
-    </div>
-
-    <!-- Mar -->
-    <div class="group">
-      <div class="bar dark" style="height: 85%"></div>
-      <div class="bar light" style="height: 65%"></div>
-      <span>Mar</span>
-    </div>
-
-    <!-- Apr -->
-    <div class="group">
-      <div class="bar dark" style="height: 0%"></div>
-      <div class="bar light" style="height: 0%"></div>
-      <span>Apr</span>
-    </div>
-  </div>
+    <div class="chart-row">
 
 </div>
 
-    <!-- CUSTOMER -->
-    <div class="card big">
-      <h3>Customer Growth</h3>
-      <canvas id="customerChart"></canvas>
+        <!--LEFT: BAR CHART-->
+<div class="card left">
+    <h3>Monthly Revenue</h3>
+       <div class="bar-chart">
+    
+
+            <!-- Jan -->
+        <div class="bar-chart">
+            <div class="bar dark" style="height: 40%"></div>
+            <div class="bar light" style="height: 30%"></div>
+            <span>Jan</span>
+         </div>
+
+             <!-- Feb -->
+            <div class="bar-chart">
+                <div class="bar dark" style="height: 90%"></div>
+                <div class="bar light" style="height: 70%"></div>
+                     <span>Feb</span>
+            </div>
+
+            <!-- Mar -->
+            <div class="bar-chart">
+                <div class="bar dark" style="height: 85%"></div>
+                <div class="bar light" style="height: 65%"></div>
+                <span>Mar</span>
+            </div>
+
+            <!-- Apr -->
+               <div class="bar-chart">
+                    <div class="bar dark" style="height: 72%"></div>
+                     <div class="bar light" style="height: 68%"></div>
+                     <span>Apr</span>
+                </div>
+
+
+                <div class="bar-chart">
+                    <div class="bar dark" style="height: 92%"></div>
+                     <div class="bar light" style="height: 100%"></div>
+                     <span>May</span>
+                </div>
+
+
+                <div class="bar-chart">
+                    <div class="bar dark" style="height: 42%"></div>
+                     <div class="bar light" style="height: 50%"></div>
+                     <span>Jun</span>
+                </div>
+
+
+                <div class="bar-chart">
+                    <div class="bar dark" style="height: 50%"></div>
+                     <div class="bar light" style="height: 70%"></div>
+                     <span>Jul</span>
+                </div>
+        </div>
+</div> 
+
+     <!-- RIGHT: PIE CHART -->
+  <div class="card right">
+    <h4>Top Selling Products</h4>
+
+    <div class="pie-chart">
+      <span class="label laptop">Laptop 50%</span>
+      <span class="label phone">Phone 33%</span>
+      <span class="label other">17%</span>
     </div>
+
+   
+           <!--COSTUMER-->
+</div>
+        <div class="card">
+        <h3>Customer Growth</h3>
+
+        <svg viewBox="0 0 600 200" class="line-chart">
+
+             <!-- GRADIENT -->
+            <defs>
+             <linearGradient id="fillGradient" x1="0" y1="0" x2="0" y2="1">
+             <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.4"/>
+             <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+             </linearGradient>
+            </defs>
+
+            <!-- AREA -->
+            <path d="
+                M 20 150
+                L 120 120
+                L 220 125
+                L 320 90
+                L 420 110
+                L 520 60
+                L 580 50
+                L 580 180
+                L 20 180 Z"
+                fill="url(#fillGradient)"
+            />
+
+          <!-- LINE -->
+          <path d="
+             M 20 150
+             L 120 120
+             L 220 125
+             L 320 90
+             L 420 110
+             L 520 60
+             L 580 50"
+             fill="none"
+             stroke="#2563eb"
+             stroke-width="3"
+             stroke-linecap="round"
+            />
+
+                     <!-- DOTS -->
+                    <circle cx="20" cy="150" r="5" fill="#2563eb"/>
+                    <circle cx="120" cy="120" r="5" fill="#2563eb"/>
+                    <circle cx="220" cy="125" r="5" fill="#2563eb"/>
+                    <circle cx="320" cy="90" r="5" fill="#2563eb"/>
+                    <circle cx="420" cy="110" r="5" fill="#2563eb"/>
+                    <circle cx="520" cy="60" r="5" fill="#2563eb"/>
+                    <circle cx="580" cy="50" r="5" fill="#2563eb"/>
+
+        </svg>
+
+            <!-- Labels -->
+            <div class="labels">
+             <span>Jan</span>
+             <span>Feb</span>
+                <span>Mar</span>
+                 <span>Mar</span>
+                <span>Apr</span>
+            </div>
+    </div> 
 
     <!-- TABLE -->
     <div class="card table">
@@ -130,7 +224,7 @@
             <td>Albana Shala</td>
             <td>Laptop</td>
             <td>4 Mar</td>
-            <td>$1000</td>
+            <td>$9000</td>
             <td class="green">Completed</td>
           </tr>
 
@@ -139,16 +233,34 @@
             <td>Ardit Hoxha</td>
             <td>Phone</td>
             <td>6 Mar</td>
-            <td>$600</td>
+            <td>$800</td>
             <td class="orange">Pending</td>
           </tr>
 
           <tr>
             <td>3</td>
             <td>Lira Gashi</td>
-            <td>Car</td>
+            <td>Mouse</td>
             <td>8 Mar</td>
-            <td>$9000</td>
+            <td>$50</td>
+            <td class="green">Completed</td>
+          </tr>
+
+          <tr>
+            <td>4</td>
+            <td>Dea Tahiri</td>
+            <td>USB</td>
+            <td>10 Mar</td>
+            <td>$30</td>
+            <td class="red">Cancelled</td>
+          </tr>
+
+          <tr>
+            <td>5</td>
+            <td>Diana Hasani</td>
+            <td>Car</td>
+            <td>11 Mar</td>
+            <td>$90000</td>
             <td class="green">Completed</td>
           </tr>
 
