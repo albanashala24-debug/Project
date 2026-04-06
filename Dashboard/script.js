@@ -1,48 +1,64 @@
-// Revenue
+const baseOptions = {
+  responsive: true,
+  plugins: { legend: { display: false } }
+};
+
+// BAR
 new Chart(document.getElementById("revenueChart"), {
   type: "bar",
   data: {
     labels: ["Jan", "Feb", "Mar", "Apr"],
-    datasets: [{
-      data: [4000, 5000, 3000, 6500],
-      backgroundColor: "#6366f1",
-      borderRadius: 6
-    }]
+    datasets: [
+      {
+        data: [2500, 6300, 6000, 4000],
+        backgroundColor: "#2563eb",
+        borderRadius: 8
+      },
+      {
+        data: [2000, 5400, 5200, 3000],
+        backgroundColor: "#93c5fd",
+        borderRadius: 8
+      }
+    ]
   },
-  options: {
-    plugins: { legend: { display: false } }
-  }
+  options: baseOptions
 });
 
-// Pie
+// PIE
 new Chart(document.getElementById("productChart"), {
   type: "doughnut",
   data: {
-    labels: ["Laptop", "Phone", "Car"],
+    labels: ["Laptop", "Phone", "Other"],
     datasets: [{
       data: [50, 33, 17],
-      backgroundColor: ["#6366f1", "#22c55e", "#f59e0b"]
+      backgroundColor: ["#2563eb", "#22c55e", "#f59e0b"]
     }]
   }
 });
 
-// Line
+// LINE
 new Chart(document.getElementById("customerChart"), {
   type: "line",
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May"],
     datasets: [{
-      data: [120, 200, 260, 400],
-      borderColor: "#6366f1",
-      tension: 0.4,
-      fill: true
+      data: [100, 180, 170, 300, 420],
+      borderColor: "#2563eb",
+      backgroundColor: "rgba(37,99,235,0.1)",
+      fill: true,
+      tension: 0.4
     }]
   }
 });
 
-// Theme Toggle
-const btn = document.getElementById("themeToggle")
+// DARK MODE
+document.getElementById("themeToggle").onclick = () => {
+  document.body.classList.toggle("dark");
+};
 
-btn.onclick = () => {
-  document.body.classList.toggle("dark")
-}
+const menuBtn = document.getElementById("menuToggle");
+const sidebar = document.querySelector(".sidebar");
+
+menuBtn.onclick = () => {
+  sidebar.classList.toggle("show");
+};
