@@ -18,9 +18,10 @@ body {
 /* SIDEBAR */
 .sidebar {
   width: 250px;
-  height: 100vh;
+  height: 114vh;
   background: #fff;
   padding: 24px;
+  border-radius: 15px;
 }
 
 .sidebar h2 {
