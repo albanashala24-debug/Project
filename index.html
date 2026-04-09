@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+ *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#f5f7fb;transition:.3s}
+
+.container{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{background:#fff;padding:20px;border-right:1px solid #eee}
+.sidebar p{padding:10px;margin-bottom:5px;color:#555;cursor:pointer}
+.sidebar .active{background:linear-gradient(90deg,#281eb6,#7f8cff);color:#fff;border-radius:10px}
+.sidebar p:hover{transform:translateX(5px);background:#eef2ff}
+
+/* MAIN */
+.main{padding:20px}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;margin-bottom:20px;border-radius:15px;background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);position: relative;z-index: 10;}
+.topbar input{width:300px;padding:10px 15px;border-radius:10px;border:1px solid #ddd}
+.topbar .right{display:flex;align-items:center;gap:15px}
+.topbar img{width:35px;height:35px;border-radius:50%;cursor:pointer}
+
+/* DROPDOWNS */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 80%;
+  right: 0;
+  min-width: 160px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  z-index: 9999;
+}
+
+.dropdown-menu.show {opacity: 1;transform: translateY(0) scale(1);pointer-events: auto;}
+
+.dropdown-menu p {padding: 8px 10px;border-radius: 8px;cursor: pointer;}
+
+.dropdown-menu p:hover {background: #f1f5ff;}
+
+/* CARDS */
+.card{padding:20px;border-radius:15px;background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);transition:.3s}
+.card:hover{transform:translateY(-6px)}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:20px}
+
+/* CHART GRID */
+.grid{
+ display:grid;
+ grid-template-columns:2fr 1fr;
+ gap:20px;
+ margin-bottom:20px;
+}
+
+.grid-2{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:20px;
+ margin-bottom:20px;
+}
+
+/* TABLE */
+.table{margin-top:20px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px}
+th{text-align: left; color:#9ca3af}
+tr{border-top:1px solid #eee}
+
+.green{background:#dcfce7;color:#0e6e31;padding:4px 10px;border-radius:20px}
+.orange{background:#fef3c7;color:#d8780a;padding:4px 10px;border-radius:20px}
+.red{background:#fee2e2;color:#cc0b0b;padding:4px 10px;border-radius:20px}
+
+/* DARK */
+body.dark{background:#0f172a;color:#fff}
+body.dark .card,body.dark .sidebar,body.dark .topbar{background:#1e293b}
+
+button{padding:6px 10px;border:none;border-radius:8px;background:#1732ca;color:#fff;cursor:pointer}
+
+@media(max-width:900px){
+.container{grid-template-columns:1fr}
+.grid,.grid-2{grid-template-columns:1fr}
+.kpis{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<aside class="sidebar" id="sidebar">
+<p class="active">Dashboard</p>
+<p>Orders</p>
+<p>Customers</p>
+<p>Products</p>
+<p>Reports</p>
+<p>Settings</p>
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+<input type="text" placeholder="Search...">
+<div class="right">
+<button id="themeToggle">🌙</button>
+<div class="dropdown">
+<span onclick="toggleNotif()">🔔</span>
+<div class="dropdown-menu" id="notif">
+<p>New Order</p>
+<p>Payment Completed</p>
+</div>
+</div>
+<div class="dropdown">
+<img src="https://i.pravatar.cc/40" onclick="toggleProfile()">
+<div class="dropdown-menu" id="profile">
+<p>Profile</p>
+<p>Settings</p>
+<p>Logout</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- KPI -->
+<div class="kpis">
+<div class="card"><p>Total Revenue</p><h2>$50,000</h2></div>
+<div class="card"><p>Total Orders</p><h2>2,000</h2></div>
+<div class="card"><p>Customers</p><h2>400</h2></div>
+<div class="card"><p>Conversion</p><h2>3.2%</h2></div>
+</div>
+
+<!-- TOP CHARTS -->
+<div class="grid">
+<div class="card"><h3>Monthly Revenue</h3><canvas id="revenueChart"></canvas></div>
+<div class="card"><h3>Top Products</h3><canvas id="productChart"></canvas></div>
+</div>
+
+<!-- SECOND ROW -->
+<div class="grid-2">
+<div class="card"><h3>Customer Growth</h3><canvas id="customerChart"></canvas></div>
+<div class="card"><h3>Revenue Trend</h3><canvas id="areaChart"></canvas></div>
+</div>
+
+<!-- THIRD ROW -->
+<div class="grid-2">
+<div class="card"><h3>Year Comparison</h3><canvas id="barCompare"></canvas></div>
+<div class="card"><h3>Performance</h3><canvas id="radarChart"></canvas></div>
+</div>
+
+<!-- TABLE -->
+<div class="card table">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Customer</th>
+<th>Product</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Albana Shala</td><td>Laptop</td><td>$1,000</td><td><span class="green">Completed</span></td></tr>
+<tr><td>2</td><td>Zana Shala</td><td>Laptop</td><td>$950</td><td><span class="red">Cancelled</span></td></tr>
+<tr><td>3</td><td>Diana Hasani</td><td>Headphones</td><td>$150</td><td><span class="orange">Pending</span></td></tr>
+<tr><td>4</td><td>Dea Tahiri</td><td>USB</td><td>$50</td><td><span class="green">Completed</span></td></tr>
+<tr><td>5</td><td>Albion Shala</td><td>Car</td><td>$49,000</td><td><span class="green">Completed</span></td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+</div>
+
+<script>
+// DARK MODE
+document.getElementById("themeToggle").onclick=()=>document.body.classList.toggle("dark")
+
+const notif = document.getElementById("notif");
+const profile = document.getElementById("profile");
+
+// toggle function
+function toggleMenu(menu) {
+  // mbyll të gjitha
+  document.querySelectorAll(".dropdown-menu").forEach(m => {
+    if (m !== menu) m.classList.remove("show");
+  });
+
+  // toggle aktualen
+  menu.classList.toggle("show");
+}
+
+// events
+function toggleNotif() {
+  toggleMenu(notif);
+}
+
+function toggleProfile() {
+  toggleMenu(profile);
+}
+
+// mbyll kur klikon jashtë
+document.addEventListener("click", function(e) {
+  if (!e.target.closest(".dropdown")) {
+    document.querySelectorAll(".dropdown-menu").forEach(m => {
+      m.classList.remove("show");
+    });
+  }
+});
+
+// BASE OPTIONS
+const base={responsive:true,plugins:{legend:{display:false}}}
+
+// MAIN CHARTS
+new Chart(document.getElementById("revenueChart"),{type:"bar",data:{labels:["Jan","Feb","Mar"],datasets:[{data:[2500,6300,6000],backgroundColor:"#5a67ff"}]},options:base})
+
+new Chart(document.getElementById("productChart"),{type:"doughnut",data:{labels:["Laptop","Phone","Other"],datasets:[{data:[50,33,17],backgroundColor:["#2563eb","#22c55e","#f59e0b"]}]}})
+
+new Chart(document.getElementById("customerChart"),{type:"line",data:{labels:["Jan","Feb","Mar","Apr"],datasets:[{data:[100,180,170,300],borderColor:"#2563eb",backgroundColor:"rgba(37,99,235,0.1)",fill:true}]}})
+
+// EXTRA CHARTS
+new Chart(document.getElementById("areaChart"),{type:"line",data:{labels:["Jan","Feb","Mar","Apr","May"],datasets:[{data:[1200,2500,1800,3200,4000],borderColor:"#22c55e",backgroundColor:"rgba(34,197,94,0.15)",fill:true}]}})
+
+new Chart(document.getElementById("barCompare"),{type:"bar",data:{labels:["Q1","Q2","Q3","Q4"],datasets:[{data:[5000,7000,8000,6000],backgroundColor:"#6366f1"},{data:[6500,9000,9500,8500],backgroundColor:"#22c55e"}]}})
+
+new Chart(document.getElementById("radarChart"),{type:"radar",data:{labels:["Sales","Marketing","Dev","Support","Finance"],datasets:[{data:[80,70,90,85,75],backgroundColor:"rgba(99,102,241,0.2)",borderColor:"#6366f1"}]}})
+</script>
+
+</body>
+</html>
