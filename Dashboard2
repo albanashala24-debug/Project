@@ -9,14 +9,14 @@
 
 <style>
  *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#f5f7fb;transition:.3s}
+body{background:#f5f7fb;color:#111;transition:.3s}
 
 .container{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
 
 /* SIDEBAR */
-.sidebar{background:#fff;padding:20px;border-right:1px solid #eee}
-.sidebar p{padding:10px;margin-bottom:5px;color:#555;cursor:pointer}
-.sidebar .active{background:linear-gradient(90deg,#281eb6,#7f8cff);color:#fff;border-radius:10px}
+.sidebar{background:#fff;padding:20px 12px;border-right:1px solid #eee}
+.sidebar p{padding:10px 12px;margin-bottom:6px;color:#555;font: size 14px;border-radius: 8px;cursor: pointer;}
+.sidebar .active{background:linear-gradient(90deg,#14355c,#386ab4);color:#fff;font-weight:500;border-radius:10px}
 .sidebar p:hover{transform:translateX(5px);background:#eef2ff}
 
 /* MAIN */
@@ -89,15 +89,126 @@ tr{border-top:1px solid #eee}
 
 /* DARK */
 body.dark{background:#0c1429;color:#fff}
-body.dark .card,body.dark .sidebar,body.dark .topbar{background:#172842}
+body.dark .card,body.dark .sidebar,body.dark .topbar{background:#172942}
 
-button{padding:6px 10px;border:none;border-radius:8px;background:#ffffff;color:#fff;cursor:pointer}
+button{padding:6px 10px;border:none;border-radius:8px;background:#fff;color:#fff;cursor:pointer}
 
-@media(max-width:900px){
-.container{grid-template-columns:1fr}
-.grid,.grid-2{grid-template-columns:1fr}
-.kpis{grid-template-columns:1fr}
+/* MOBILE NAV BUTTON */
+.menu-btn{
+display:none;
+font-size:22px;
+cursor:pointer;
 }
+
+/* TABLE SCROLL */
+.table{
+overflow-x:auto;
+}
+
+
+/* =====================
+   TABLET
+===================== */
+@media (width: 1024px) {
+
+  .container {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .sidebar p {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* charts stack */
+  .grid,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar input {
+    width: 180px;
+  }
+}
+
+
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 540px) {
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .main {
+    padding: 10px;
+  }
+    
+  .sidebar{
+    position:fixed;
+    top:0;
+    left:-100%;
+    width:220px;
+    height:100%;
+    z-index:1000;
+    transition:.3s;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    background:#fff;
+    }
+
+  .sidebar.show{
+    left:0;
+    }
+
+  /* TOPBAR */
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .topbar input {
+    width: 100%;
+  }
+
+  .topbar .right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* KPI */
+  .kpis {
+    grid-template-columns: 1fr;
+  }
+
+  /* CHARTS */
+  .grid,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* TABLE SCROLL */
+  .table {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  /* DROPDOWN FIX */
+  .dropdown-menu {
+    right: 10px;
+    left: auto;
+    top: 60px;
+  }
+}
+
 </style>
 </head>
 
@@ -117,6 +228,7 @@ button{padding:6px 10px;border:none;border-radius:8px;background:#ffffff;color:#
 <main class="main">
 
 <div class="topbar">
+<span class="menu-btn" onclick="toggleSidebar()">☰</span>
 <input type="text" placeholder="Search...">
 <div class="right">
 <button id="themeToggle">🌙</button>
@@ -196,6 +308,13 @@ document.getElementById("themeToggle").onclick=()=>document.body.classList.toggl
 const notif = document.getElementById("notif");
 const profile = document.getElementById("profile");
 
+function toggleSidebar(){
+document.getElementById("sidebar").classList.toggle("show").forEach(m => {
+    if (m !== menu) m.classList.remove("show");
+  });
+
+}
+
 // toggle function
 function toggleMenu(menu) {
   // mbyll të gjitha
@@ -229,7 +348,7 @@ document.addEventListener("click", function(e) {
 const base={responsive:true,plugins:{legend:{display:false}}}
 
 // MAIN CHARTS
-new Chart(document.getElementById("revenueChart"),{type:"bar",data:{labels:["Jan","Feb","Mar","Apr"],datasets:[{data:[2500,6300,6000,5200],backgroundColor:"#2563eb"}]},options:base})
+new Chart(document.getElementById("revenueChart"),{type:"bar",data:{labels:["Jan","Feb","Mar","Apr"],datasets:[{data:[2500,6300,6000,5200],backgroundColor:"#2563eb", borderRadius: 8}]},options:base})
 
 new Chart(document.getElementById("productChart"),{type:"doughnut",data:{labels:["Laptop","Phone","Other"],datasets:[{data:[50,33,17],backgroundColor:["#2563eb","#22c55e","#f59e0b"]}]}})
 
@@ -238,7 +357,7 @@ new Chart(document.getElementById("customerChart"),{type:"line",data:{labels:["J
 // EXTRA CHARTS
 new Chart(document.getElementById("areaChart"),{type:"line",data:{labels:["Jan","Feb","Mar","Apr","May"],datasets:[{data:[1200,2500,1800,3200,4000],borderColor:"#22c55e",backgroundColor:"rgba(34,197,94,0.15)",fill:true}]}})
 
-new Chart(document.getElementById("barCompare"),{type:"bar",data:{labels:["Q1","Q2","Q3","Q4"],datasets:[{data:[5000,7000,8000,6000],backgroundColor:"#6366f1"},{data:[6500,9000,9500,8500],backgroundColor:"#22c55e"}]}})
+new Chart(document.getElementById("barCompare"),{type:"bar",data:{labels:["Q1","Q2","Q3","Q4"],datasets:[{data:[5000,7000,8000,6000],backgroundColor:"#6366f1", borderRadius: 8},{data:[6500,9000,9500,8500],backgroundColor:"#22c55e", borderRadius: 8}]}})
 
 new Chart(document.getElementById("radarChart"),{type:"radar",data:{labels:["Sales","Marketing","Dev","Support","Finance"],datasets:[{data:[80,70,90,85,75],backgroundColor:"rgba(99,102,241,0.2)",borderColor:"#6366f1"}]}})
 </script>
