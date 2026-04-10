@@ -229,7 +229,7 @@ document.addEventListener("click", function(e) {
 const base={responsive:true,plugins:{legend:{display:false}}}
 
 // MAIN CHARTS
-new Chart(document.getElementById("revenueChart"),{type:"bar",data:{labels:["Jan","Feb","Mar","Apr"],datasets:[{data:[2500,6300,6000,5200],backgroundColor:"#5a67ff"}]},options:base})
+new Chart(document.getElementById("revenueChart"),{type:"bar",data:{labels:["Jan","Feb","Mar","Apr"],datasets:[{data:[2500,6300,6000,5200],backgroundColor:"#2563eb"}]},options:base})
 
 new Chart(document.getElementById("productChart"),{type:"doughnut",data:{labels:["Laptop","Phone","Other"],datasets:[{data:[50,33,17],backgroundColor:["#2563eb","#22c55e","#f59e0b"]}]}})
 
