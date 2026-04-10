@@ -88,10 +88,10 @@ tr{border-top:1px solid #eee}
 .red{background:#fee2e2;color:#cc0b0b;padding:4px 10px;border-radius:20px}
 
 /* DARK */
-body.dark{background:#0f172a;color:#fff}
-body.dark .card,body.dark .sidebar,body.dark .topbar{background:#1e293b}
+body.dark{background:#0c1429;color:#fff}
+body.dark .card,body.dark .sidebar,body.dark .topbar{background:#172842}
 
-button{padding:6px 10px;border:none;border-radius:8px;background:#1732ca;color:#fff;cursor:pointer}
+button{padding:6px 10px;border:none;border-radius:8px;background:#ffffff;color:#fff;cursor:pointer}
 
 @media(max-width:900px){
 .container{grid-template-columns:1fr}
