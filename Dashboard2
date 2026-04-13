@@ -16,7 +16,7 @@ body{background:#f5f7fb;color:#111;transition:.3s}
 /* SIDEBAR */
 .sidebar{background:#fff;padding:20px 12px;border-right:1px solid #eee}
 .sidebar p{padding:10px 12px;margin-bottom:6px;color:#555;font: size 14px;border-radius: 8px;cursor: pointer;}
-.sidebar .active{background:linear-gradient(90deg,#14355c,#386ab4);color:#fff;font-weight:500;border-radius:10px}
+.sidebar .active{background:linear-gradient(90deg,#1970da,#5a83c2);color:#fff;font-weight:500;border-radius:10px}
 .sidebar p:hover{transform:translateX(5px);background:#eef2ff}
 
 /* MAIN */
