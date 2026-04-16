@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">DummyJSON Product Explorer</p>
+        <h1>Find products without fighting the interface.</h1>
+        <p class="hero-copy">
+          Search by title, sort by price, move through pages quickly, and open a
+          focused detail page with reviews, tags, and images.
+        </p>
+        <div class="hero-highlights" aria-label="App highlights">
+          <span class="highlight-pill">Instant search</span>
+          <span class="highlight-pill">Price sorting</span>
+          <span class="highlight-pill">12 products per page</span>
+        </div>
+      </section>
+
+      <section class="controls-card">
+        <div class="controls-heading">
+          <div>
+            <p class="section-label">Catalog Controls</p>
+            <h2>Find the right product quickly</h2>
+          </div>
+          <p id="resultsSummary" class="results-summary">Loading products...</p>
+        </div>
+
+        <form id="filtersForm" class="filters" autocomplete="off">
+          <label class="field">
+            <span>Search by title</span>
+            <div class="input-wrap">
+              <input
+                id="searchInput"
+                name="search"
+                type="search"
+                placeholder="Try phone, chair, shoes..."
+              />
+              <button id="clearSearchButton" class="inline-button hidden" type="button">
+                Clear
+              </button>
+            </div>
+          </label>
+
+          <label class="field">
+            <span>Sort by price</span>
+            <select id="sortSelect" name="sort">
+              <option value="">Default order</option>
+              <option value="asc">Low to high</option>
+              <option value="desc">High to low</option>
+            </select>
+          </label>
+
+          <div class="action-row">
+            <button type="submit" class="primary-button">Apply filters</button>
+            <button id="resetButton" type="button" class="secondary-button">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="catalog-section">
+        <div id="statusMessage" class="status-message" role="status"></div>
+        <div id="productGrid" class="product-grid" aria-live="polite"></div>
+      </section>
+
+      <nav class="pagination-card" aria-label="Product pagination">
+        <button id="prevButton" class="ghost-button" type="button">Previous</button>
+        <div class="pagination-copy">
+          <p id="pageIndicator" class="page-indicator">Page 1</p>
+          <p id="pageHint" class="page-hint">Use pagination to browse more products.</p>
+        </div>
+        <button id="nextButton" class="ghost-button" type="button">Next</button>
+      </nav>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

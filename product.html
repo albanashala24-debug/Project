@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <a class="back-link" href="./index.html">&larr; Back to catalog</a>
+
+      <section id="detailStatus" class="status-message detail-status" role="status">
+        Loading product details...
+      </section>
+
+      <article id="productDetail" class="detail-layout hidden" aria-live="polite">
+        <section class="gallery-card">
+          <img
+            id="mainProductImage"
+            class="main-product-image"
+            src=""
+            alt=""
+          />
+          <p class="gallery-caption">Tap a thumbnail to switch the main product image.</p>
+          <div id="thumbnailRow" class="thumbnail-row"></div>
+        </section>
+
+        <section class="detail-card">
+          <p id="detailCategory" class="eyebrow"></p>
+          <h1 id="detailTitle" class="detail-title"></h1>
+          <p id="detailDescription" class="detail-description"></p>
+
+          <div class="detail-metrics">
+            <div class="metric">
+              <span>Price</span>
+              <strong id="detailPrice"></strong>
+            </div>
+            <div class="metric">
+              <span>Discount</span>
+              <strong id="detailDiscount"></strong>
+            </div>
+            <div class="metric">
+              <span>Rating</span>
+              <strong id="detailRating"></strong>
+            </div>
+          </div>
+
+          <section class="detail-subsection">
+            <h2>Tags</h2>
+            <div id="detailTags" class="tag-list"></div>
+          </section>
+
+          <section class="detail-subsection">
+            <h2>Reviews</h2>
+            <div id="detailReviews" class="review-list"></div>
+          </section>
+        </section>
+      </article>
+    </main>
+
+    <script src="product.js"></script>
+  </body>
+</html>
